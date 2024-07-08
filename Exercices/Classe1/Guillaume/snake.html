@@ -52,7 +52,6 @@
       let total_col = 20; //total column number
       let board;
       let context;
-      let img = new Image();
 
       let snakeX = blockSize * 5;
       let snakeY = blockSize * 5;
@@ -91,8 +90,8 @@
         context.fillRect(0, 0, board.width, board.height);
 
         // Set food color and position
-        img.src = "black.spider.png";
-        context.drawImage(img, foodX, foodY, blockSize, blockSize);
+        context.fillStyle = "black";
+        context.fillRect(foodX, foodY, blockSize, blockSize);
 
         if (snakeX == foodX && snakeY == foodY) {
           snakeBody.push([foodX, foodY]);
