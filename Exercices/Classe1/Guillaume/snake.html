@@ -19,6 +19,7 @@
       }
 
       h1 {
+        margin-top: 50px;
         font-family: MGS;
       }
 
@@ -27,6 +28,7 @@
         font-weight: bold;
         color: rgb(78, 78, 82);
         font-family: MGS;
+        margin-bottom: 100px;
       }
 
       canvas #board {
@@ -84,12 +86,13 @@
         }
 
         // Background of a Game
-        context.fillStyle = "green";
+        context.fillStyle = "rgba(115, 144, 84, 1)";
         context.fillRect(0, 0, board.width, board.height);
 
         // Set food color and position
-        context.fillStyle = "yellow";
-        context.fillRect(foodX, foodY, blockSize, blockSize);
+        let img = new Image();
+        img.src = "images/GlassesSmirk.svg";
+        context.drawImage(img, foodX, foodY, blockSize, blockSize);
 
         if (snakeX == foodX && snakeY == foodY) {
           snakeBody.push([foodX, foodY]);
@@ -127,12 +130,14 @@
           // Out of bound condition
           gameOver = true;
           alert("Snake?! Snaaaaaaaaaaaaaaaake!");
+          window.location.reload();
         }
         for (let i = 0; i < snakeBody.length; i++) {
           if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
             // Snake eats own body
             gameOver = true;
             alert("Snake?! Snaaaaaaaaaaaaaaaake!");
+            window.location.reload();
           }
         }
       }
